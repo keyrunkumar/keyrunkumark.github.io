@@ -7,15 +7,16 @@
     <script src="https://cdn.jsdelivr.net/npm/tsparticles-all@3.0.3/tsparticles.all.bundle.min.js"></script>
     <style>
         :root {
-            --bg-color: #0d1117; /* Slate Dark Theme */
-            --card-bg: rgba(22, 27, 34, 0.8);
-            --card-border: #30363d;
-            --accent-color: #58a6ff;
-            --accent-glow: rgba(88, 166, 255, 0.2);
-            --text-main: #c9d1d9;
-            --text-bright: #f0f6fc;
-            --border-hover: #444c56;
-            --grid-card-hover: rgba(33, 38, 45, 0.7);
+            --bg-color: #0b1329; /* Explicit Premium Slate Dark Navy - NO BLACK */
+            --card-bg: rgba(27, 38, 59, 0.7); /* Sleek Glassmorphic Steel Blue */
+            --card-border: #415a77;
+            --accent-color: #00bcd4; /* Vibrant Cyan/Teal Accent */
+            --accent-glow: rgba(0, 188, 212, 0.25);
+            --text-main: #e0e1dd;
+            --text-bright: #ffffff;
+            --border-hover: #778da9;
+            --grid-card-hover: rgba(27, 38, 59, 0.95);
+            --nav-bg: rgba(27, 38, 59, 0.85);
         }
 
         body {
@@ -37,102 +38,108 @@
             pointer-events: none;
         }
 
-        /* Cinematic Drop-down & Fade Entrance Animation */
+        /* Smooth Interactive Entrance Animation */
         .container {
             position: relative;
             z-index: 2;
-            max-width: 1000px;
+            max-width: 950px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 30px 20px 120px 20px; /* High bottom padding to clear the floating bottom menu */
             opacity: 0;
-            transform: translateY(-10px);
-            animation: cinematicEntrance 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            transform: translateY(15px);
+            animation: elegantEntrance 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        @keyframes cinematicEntrance {
+        @keyframes elegantEntrance {
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
 
-        /* Premium Compact Sticky Navigation Menu */
+        /* Floating Bottom Menu Bar matching Mayank's Portfolio layout style */
         nav {
             display: flex;
             justify-content: center;
             gap: 10px;
-            margin-bottom: 25px;
-            position: sticky;
-            top: 15px;
-            background: rgba(22, 27, 34, 0.85);
-            padding: 8px;
-            border-radius: 10px;
-            backdrop-filter: blur(12px);
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--nav-bg);
+            padding: 10px 20px;
+            border-radius: 30px;
+            backdrop-filter: blur(20px);
             border: 1px solid var(--card-border);
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+            z-index: 100;
         }
 
         nav button {
             background: none;
-            border: 1px solid transparent;
+            border: none;
             color: var(--text-main);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 500;
             cursor: pointer;
-            padding: 8px 16px;
-            border-radius: 6px;
-            transition: all 0.25s ease;
+            padding: 8px 18px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
         }
 
         nav button:hover, nav button.active {
             color: var(--text-bright);
-            background-color: rgba(48, 54, 61, 0.5);
-            border-color: var(--accent-color);
-            box-shadow: 0 0 8px var(--accent-glow);
+            background-color: rgba(0, 188, 212, 0.2);
+            box-shadow: inset 0 0 8px rgba(0, 188, 212, 0.1);
         }
 
         .section {
             display: none;
-            animation: tabFadeIn 0.4s ease forwards;
         }
 
         .section.active {
             display: block;
         }
 
-        @keyframes tabFadeIn {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Compact Hero Configurations */
+        /* Profile Layout Details */
         .hero-section {
+            padding: 60px 0 40px 0;
             text-align: center;
-            padding: 15px 0 20px 0;
         }
 
         h1 {
             color: var(--text-bright);
-            font-size: 2.8rem;
-            margin: 0 0 5px 0;
+            font-size: 3.4rem;
+            margin: 0 0 10px 0;
             letter-spacing: -1px;
             font-weight: 700;
         }
 
-        .subtitle {
-            font-size: 1.25rem;
+        .terminal-cursor {
             color: var(--accent-color);
-            margin-bottom: 15px;
-            font-weight: 300;
+            display: inline-block;
+            animation: flash 1s step-end infinite;
+        }
+
+        @keyframes flash {
+            from, to { color: transparent }
+            50% { color: var(--accent-color); }
+        }
+
+        .subtitle {
+            font-size: 1.35rem;
+            color: var(--accent-color);
+            margin-bottom: 25px;
+            font-weight: 400;
         }
 
         .card {
             background-color: var(--card-bg);
             border: 1px solid var(--card-border);
-            border-radius: 10px;
-            padding: 22px;
-            margin-bottom: 18px;
-            backdrop-filter: blur(8px);
+            border-radius: 12px;
+            padding: 26px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(12px);
             transition: border-color 0.25s ease;
         }
 
@@ -140,77 +147,84 @@
             border-color: var(--border-hover);
         }
 
-        h2 {
-            color: var(--text-bright);
-            border-bottom: 1px solid var(--card-border);
-            padding-bottom: 8px;
+        h2.section-heading {
+            color: var(--accent-color);
+            font-size: 2rem;
+            font-weight: 700;
             margin-top: 0;
-            font-size: 1.45rem;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .section-subtext {
+            font-size: 1.05rem;
+            color: var(--text-main);
+            margin-bottom: 30px;
         }
 
         h3 {
             color: var(--text-bright);
             margin-top: 0;
-            font-size: 1.15rem;
+            font-size: 1.25rem;
         }
 
-        /* Highly Optimized Dashboard Stats Layout Grid */
-        .highlight-grid {
+        /* Compact Dashboard Stat Metrics row */
+        .metrics-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 12px;
-            margin-bottom: 18px;
+            margin: 30px 0;
         }
 
         @media (max-width: 768px) {
-            .highlight-grid {
+            .metrics-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
 
-        .highlight-card {
-            background: rgba(10, 12, 16, 0.6);
+        .metric-card {
+            background: rgba(13, 27, 42, 0.6);
             border: 1px solid var(--card-border);
             border-radius: 8px;
-            padding: 12px 6px;
+            padding: 14px 6px;
             text-align: center;
             border-top: 3px solid var(--accent-color);
         }
 
-        .highlight-metric {
-            font-size: 1.4rem;
+        .metric-value {
+            font-size: 1.5rem;
             font-weight: 700;
             color: var(--text-bright);
-            margin-bottom: 2px;
+            margin-bottom: 3px;
         }
 
-        .highlight-desc {
-            color: #8b949e;
-            font-size: 0.78rem;
+        .metric-label {
+            color: var(--text-main);
+            font-size: 0.8rem;
             line-height: 1.3;
         }
 
-        /* Skills Progress Architecture */
-        .skill-matrix {
-            margin-bottom: 16px;
+        /* Skills Progress Matrix layouts */
+        .skill-item {
+            margin-bottom: 18px;
         }
 
-        .skill-info {
+        .skill-header {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
             font-weight: 500;
-            font-size: 0.95rem;
+            font-size: 0.98rem;
         }
 
-        .skill-bar-bg {
-            background: #161b22;
+        .skill-track {
+            background: #0d1b2a;
             height: 8px;
             border-radius: 4px;
             overflow: hidden;
         }
 
-        .skill-bar-fill {
+        .skill-fill {
             background: linear-gradient(90deg, var(--accent-color), #88a6ff);
             height: 100%;
             border-radius: 4px;
@@ -218,102 +232,125 @@
             transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .sub-tags-container {
+        .tag-pool {
             display: flex;
             flex-wrap: wrap;
             gap: 6px;
-            margin-top: 6px;
-            margin-bottom: 10px;
+            margin-top: 8px;
+            margin-bottom: 12px;
         }
 
-        .sub-tag {
-            background: rgba(33, 38, 45, 0.4);
+        .pill-tag {
+            background: rgba(65, 90, 119, 0.3);
             border: 1px solid var(--card-border);
-            color: #8b949e;
-            font-size: 0.75rem;
-            padding: 2px 8px;
-            border-radius: 4px;
+            color: var(--text-main);
+            font-size: 0.78rem;
+            padding: 3px 10px;
+            border-radius: 6px;
         }
 
-        /* Compact Layout Project Cards */
-        .project-grid {
+        /* High-End Layout Project Cards with Grid placement */
+        .projects-grid-layout {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-            gap: 15px;
-            margin-top: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
         }
 
-        .project-card {
-            background-color: rgba(10, 12, 16, 0.4);
+        .visual-project-card {
+            background-color: rgba(13, 27, 42, 0.4);
             border: 1px solid var(--card-border);
             border-radius: 10px;
-            padding: 18px;
+            padding: 22px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             transition: transform 0.25s, border-color 0.25s;
         }
 
-        .project-card:hover {
+        .visual-project-card:hover {
             transform: translateY(-3px);
             border-color: var(--accent-color);
             background-color: var(--grid-card-hover);
         }
 
-        .project-category {
+        .project-meta-tag {
             font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             color: var(--accent-color);
             font-weight: 700;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
-        .project-title {
+        .project-headline {
             color: var(--text-bright);
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             font-weight: 600;
-            margin: 0 0 8px 0;
+            margin: 0 0 10px 0;
         }
 
-        .project-desc {
-            font-size: 0.88rem;
-            line-height: 1.5;
-            margin-bottom: 12px;
+        .project-body-text {
+            font-size: 0.9rem;
+            line-height: 1.55;
+            margin-bottom: 15px;
             color: var(--text-main);
         }
 
-        .tech-badge {
-            background: #161b22;
+        .badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .badge-element {
+            background: #0d1b2a;
             border: 1px solid var(--card-border);
             color: var(--text-bright);
             font-size: 0.72rem;
-            padding: 2px 6px;
+            padding: 2px 8px;
             border-radius: 4px;
         }
 
-        /* Timeline Element Blocks */
-        .timeline-container {
-            margin-top: 20px;
+        /* Professional Profile Details */
+        .about-block-title {
+            color: var(--accent-color);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .timeline-item {
+        .about-text {
+            line-height: 1.7;
+            font-size: 1.02rem;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        /* Chronological Career Experience Timeline elements */
+        .career-timeline {
+            margin-top: 25px;
+        }
+
+        .career-node {
             position: relative;
-            padding-left: 24px;
-            border-left: 2px solid var(--card-border);
-            margin-bottom: 25px;
+            padding-left: 28px;
+            border-left: 1px solid var(--card-border);
+            margin-bottom: 35px;
         }
 
-        .timeline-item:last-child {
+        .career-node:last-child {
             margin-bottom: 0;
-            border-left: 2px solid transparent;
+            border-left: 1px solid transparent;
         }
 
-        .timeline-item::before {
+        .career-node::before {
             content: '';
             position: absolute;
-            left: -6px;
-            top: 4px;
+            left: -5px;
+            top: 5px;
             background: var(--bg-color);
             border: 2px solid var(--accent-color);
             width: 8px;
@@ -321,52 +358,52 @@
             border-radius: 50%;
         }
 
-        .timeline-header {
+        .node-top-row {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
             flex-wrap: wrap;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
         }
 
-        .timeline-role {
+        .role-headline {
             color: var(--text-bright);
-            font-size: 1.15rem;
+            font-size: 1.25rem;
             font-weight: 600;
             margin: 0;
         }
 
-        .timeline-company {
+        .company-headline {
             color: var(--accent-color);
-            font-size: 0.95rem;
+            font-size: 1.05rem;
             font-weight: 500;
-            margin: 1px 0 0 0;
+            margin: 2px 0 0 0;
         }
 
-        .timeline-date {
-            color: #8b949e;
+        .date-badge {
+            color: var(--text-main);
             font-size: 0.8rem;
-            background: #161b22;
-            padding: 2px 8px;
+            background: #0d1b2a;
+            padding: 3px 10px;
             border-radius: 4px;
             border: 1px solid var(--card-border);
         }
 
-        .timeline-item ul {
-            margin: 8px 0 0 0;
+        .career-node ul {
+            margin: 10px 0 0 0;
             padding-left: 18px;
-            line-height: 1.5;
-            font-size: 0.9rem;
+            line-height: 1.6;
+            font-size: 0.92rem;
         }
 
-        .timeline-item li {
+        .career-node li {
             margin-bottom: 6px;
         }
 
         .contact-links a {
             color: var(--accent-color);
             text-decoration: none;
-            margin: 0 10px;
+            margin: 0 12px;
             font-weight: 500;
         }
 
@@ -382,256 +419,234 @@
     <div class="container">
         <nav>
             <button class="active" onclick="showSection('home')">Home</button>
-            <button onclick="showSection('skills')">Skills Mastery</button>
-            <button onclick="showSection('projects')">Core Projects & Tools</button>
-            <button onclick="showSection('experience')">Experience Portfolio</button>
+            <button onclick="showSection('about')">About</button>
+            <button onclick="showSection('projects')">Projects</button>
+            <button onclick="showSection('experience')">Experience</button>
         </nav>
 
         <div id="home" class="section active">
             <div class="hero-section">
-                <h1>KIRAN KUMAR K</h1>
+                <p style="color: var(--text-main); margin-bottom: 4px; font-size: 1.1rem;">Hi, I'm</p>
+                <h1>KIRAN KUMAR K<span class="terminal-cursor">_</span></h1>
                 <div class="subtitle">Staff QA Engineer & Quality Architect</div>
-                <p style="max-width: 720px; margin: 0 auto 15px auto; line-height: 1.6; font-size: 1.02rem;">
-                    11+ years of experience engineering core validation frameworks, automated SDK test suites, and real-time streaming observability structures across Web, Mobile, Smart TVs, and Connected Devices.
-                </p>
+                
                 <div class="contact-links">
                     <a href="mailto:keyrunkumark@gmail.com">Email Profile</a> | 
                     <a href="https://linkedin.com/in/kiran1819" target="_blank">LinkedIn Profile</a>
                 </div>
             </div>
 
-            <div class="highlight-grid">
-                <div class="highlight-card">
-                    <div class="highlight-metric">11+ Years</div>
-                    <div class="highlight-desc">QE Depth & Strategy</div>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value">11+ Years</div>
+                    <div class="metric-label">QE Core Strategy</div>
                 </div>
-                <div class="highlight-card">
-                    <div class="highlight-metric">~65%</div>
-                    <div class="highlight-desc">Manual Cycle Reduction</div>
+                <div class="metric-card">
+                    <div class="metric-value">~65%</div>
+                    <div class="metric-label">Manual Test Reduction</div>
                 </div>
-                <div class="highlight-card">
-                    <div class="highlight-metric">Multi-Platform</div>
-                    <div class="highlight-desc">10+ Device Ecosystems</div>
+                <div class="metric-card">
+                    <div class="metric-value">Multi-Platform</div>
+                    <div class="metric-label">10+ Media Targets</div>
                 </div>
-                <div class="highlight-card">
-                    <div class="highlight-metric">Lead Catalyst</div>
-                    <div class="highlight-desc">Team Upskilling & Mentorship</div>
+                <div class="metric-card">
+                    <div class="metric-value">Catalyst</div>
+                    <div class="metric-label">Technical Mentorship</div>
                 </div>
             </div>
 
-            <div class="card" style="border-left: 4px solid var(--accent-color); padding: 18px;">
-                <h3 style="margin-bottom: 6px;">Executive Capability</h3>
-                <p style="margin: 0; line-height: 1.5; font-size: 0.94rem;">
-                    Part of the core QE validation squad owning full data reliability mapping for Video and App Insights. Expert in intercepting and tracing server-side telemetry calls, configuring dynamic SSAI/CSAI tracking structures, and verifying data sensors over complex multi-platform environments.
+            <div style="border-left: 2px solid var(--accent-color); padding-left: 20px; margin-top: 35px;">
+                <p style="font-size: 1.08rem; line-height: 1.65; margin: 0;">
+                    <strong>Executive Capability:</strong> Part of the core Quality Engineering team validating complex data reliability parameters for global Video Insights and App Insights architectures. Expert in auditing and tracking outbound server-side telemetry calls, tracing SDK transport handshakes, configuring SSAI/CSAI validation models, and leading end-to-end framework execution across distributed consumer device footprints.
                 </p>
             </div>
         </div>
 
-        <div id="skills" class="section">
-            <div class="card">
-                <h2>Technical Proficiency Matrix</h2>
-                <p style="margin-bottom: 20px; color: #8b949e; font-size: 0.9rem;">Visualizing core structural engineering depth accumulated across massive production lifecycles:</p>
-                
-                <div class="skill-matrix">
-                    <div class="skill-info"><span>Conviva Video & App Insights Core Validation</span><span>95%</span></div>
-                    <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="95%"></div></div>
-                    <div class="sub-tags-container">
-                        <span class="sub-tag">Video Insights Playback Metrics</span><span class="sub-tag">App Insights User Journeys</span>
-                        <span class="sub-tag">Heartbeat Auditing</span><span class="sub-tag">Buffering Analysis</span>
-                        <span class="sub-tag">Playback Failures</span><span class="sub-tag">Server SDK Telemetry Tracking</span>
-                    </div>
-                </div>
+        <div id="about" class="section">
+            <h2 class="class-heading section-heading">ABOUT ME_</h2>
+            <div class="section-subtext">A little bit about me and what I do.</div>
 
-                <div class="skill-matrix">
-                    <div class="skill-info"><span>OTT Player Validation & Digital Ad Architecture</span><span>94%</span></div>
-                    <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="94%"></div></div>
-                    <div class="sub-tags-container">
-                        <span class="sub-tag">HLS</span><span class="sub-tag">DASH</span>
-                        <span class="sub-tag">SSAI / CSAI Technology</span><span class="sub-tag">Dynamic Ad Insertion (DAI)</span>
-                        <span class="sub-tag">ExoPlayer</span><span class="sub-tag">AVPlayer</span>
-                        <span class="sub-tag">Roku / Brightcove / Web Players</span><span class="sub-tag">Frame Accuracy Verification</span>
-                    </div>
-                </div>
+            <div class="content-group" style="margin-bottom: 30px;">
+                <div class="about-block-title">TL;DR</div>
+                <p class="about-text">
+                    Staff QA Engineer with over 11 years of extensive experience delivering quality engineering platforms, multimedia analytics validation, and high-volume OTT streaming pipelines. Specialized in auditing outbound data sensor correctness, implementing automation frameworks, and monitoring data pipeline health metrics across massive concurrent consumer platforms. Proven history scaling automation infrastructures that decrease manual test cycles significantly while safeguarding data ingest accuracy.
+                </p>
+            </div>
 
-                <div class="skill-matrix">
-                    <div class="skill-info"><span>Core Test Automation Infrastructure & Scripting Libraries</span><span>91%</span></div>
-                    <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="91%"></div></div>
-                    <div class="sub-tags-container">
-                        <span class="sub-tag">Selenium</span><span class="sub-tag">Appium (Java)</span>
-                        <span class="sub-tag">Python Scripting</span><span class="sub-tag">Functional SDK Testing</span>
-                        <span class="sub-tag">Postman API Testing</span><span class="sub-tag">Katalon Studio</span>
-                        <span class="sub-tag">Playwright (Novice)</span>
-                    </div>
-                </div>
+            <div class="content-group" style="margin-bottom: 30px;">
+                <div class="about-block-title">Stack</div>
+                <ul class="about-text" style="padding-left: 20px;">
+                    <li><strong>Observability & Metrics Validation:</strong> Conviva Video Insights (QoE metrics, heartbeat patterns, buffering indicators, playback errors) & Conviva App Insights (user journey sequences, interaction logs, navigation trace maps).</li>
+                    <li><strong>OTT Streaming Architecture & Formats:</strong> HLS, MPEG-DASH, MP4, Smooth Streaming; automated/manual player validation across ExoPlayer, AVPlayer, Roku Player, Brightcove, and HTML5 video objects.</li>
+                    <li><strong>Ad Ingest & Monetization Technologies:</strong> Server-Side Ad Insertion (SSAI), Client-Side Ad Insertion (CSAI), transition marker compliance testing, and ad-payload synchronization validation.</li>
+                    <li><strong>Automation Framework Infrastructure:</strong> Custom SDK/API functional automation engines, Selenium, Appium (Java implementations), Python scripting arrays, Postman API test blocks, Katalon Studio, and Playwright (Novice status).</li>
+                    <li><strong>Network layer Analysis & Call Tracing:</strong> Telemetry packet interception, Server-Sent Events (SSE) tracking streams, outbound server-side call traces, Charles Proxy, Fiddler, Wireshark, and FFmpeg content transcoding integrity checks.</li>
+                </ul>
+            </div>
 
-                <div class="skill-matrix">
-                    <div class="skill-info"><span>AI Observability & Data Sensor Tracking Perspectives</span><span>88%</span></div>
-                    <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="88%"></div></div>
-                    <div class="sub-tags-container">
-                        <span class="sub-tag">Telemetry Call Tracing</span><span class="sub-tag">AI Agent Telemetry Pipelines</span>
-                        <span class="sub-tag">Server-Sent Events (SSE)</span><span class="sub-tag">Prompt-Level Tracking Calls</span>
-                        <span class="sub-tag">LangChain/LangGraph Call Verification</span>
-                    </div>
-                </div>
+            <div class="content-group">
+                <div class="about-block-title">More</div>
+                <p class="about-text">
+                    Throughout my career lifecycle, I have anchored total release governance layers and held final production deployment sign-off ownership across multi-national setups. My technical execution ranges from leading E2E cross-platform passes for the United States' top provider OTT framework (Sling Media) to managing the live event operations and streaming validation for India's major premium broadcast ecosystems (Hotstar, Star Sports, Voot, Tata Sky, Ditto TV, and Hungama Music).
+                </p>
             </div>
         </div>
 
         <div id="projects" class="section">
-            <div class="card">
-                <h2>Production Deployments & Custom Engineering Tools</h2>
-                <p style="color: #8b949e; margin-bottom: 20px; font-size: 0.9rem;">Review of target tracking mechanisms and custom utilities built to optimize verification pipelines:</p>
+            <h2 class="class-heading section-heading">CORE PROJECTS & TOOLS_</h2>
+            <div class="section-subtext">A targeted review of specific metric tracking mechanisms and custom software utilities built:</div>
+
+            <div class="projects-grid-layout">
                 
-                <div class="project-grid">
-                    
-                    <div class="project-card">
-                        <div>
-                            <div class="project-category">Video Observability & Quality Analytics</div>
-                            <div class="project-title">Conviva Video Insights Validation</div>
-                            <div class="project-desc">Led core verification operations for high-volume video sensors. Traced playback heartbeat sequences, bit-rate transitions, initial load delays, and error event parameters across distinct connected setups.</div>
-                        </div>
-                        <div class="project-tech">
-                            <span class="tech-badge">QoE Metrics</span>
-                            <span class="tech-badge">Heartbeat Auditing</span>
-                            <span class="tech-badge">Player SDKs</span>
-                        </div>
+                <div class="visual-project-card">
+                    <div>
+                        <div class="project-meta-tag">Video Observability & Quality Analytics</div>
+                        <div class="project-headline">Video Insights Quality System</div>
+                        <div class="project-body-text">Directed testing validation rules for core video streaming performance sensors. Checked telemetry heartbeat regularity, playback drops, multi-bitrate delivery steps, and video rendering states across different connected setups.</div>
                     </div>
-
-                    <div class="project-card">
-                        <div>
-                            <div class="project-category">Application Observability & Behavior Logs</div>
-                            <div class="project-title">Conviva App Insights Validation</div>
-                            <div class="project-desc">Validated tracking sensor setups auditing full digital consumer interaction profiles, step-back navigation pathways, click event captures, and cloud caching sync behaviors.</div>
-                        </div>
-                        <div class="project-tech">
-                            <span class="tech-badge">User Journeys</span>
-                            <span class="tech-badge">Interaction Data</span>
-                            <span class="tech-badge">Configuration Caching</span>
-                        </div>
+                    <div class="badge-container">
+                        <span class="badge-element">QoE Metrics</span>
+                        <span class="badge-element">Heartbeat Audits</span>
+                        <span class="badge-element">Player SDKs</span>
                     </div>
-
-                    <div class="project-card">
-                        <div>
-                            <div class="project-category">Custom Utility Software Architecture</div>
-                            <div class="project-title">Conviva CTP Payload Viewer</div>
-                            <div class="project-desc">Engineered an interactive JavaScript analysis plugin configured to capture and unpack compressed network data structures on-the-fly, facilitating swift diagnostics inside local layers.</div>
-                        </div>
-                        <div class="project-tech">
-                            <span class="tech-badge">JavaScript</span>
-                            <span class="tech-badge">Payload Decoding</span>
-                            <span class="tech-badge">Triage Automation</span>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div>
-                            <div class="project-category">Custom Utility Software Architecture</div>
-                            <div class="project-title">Network-Layer Schema Checker Proxy</div>
-                            <div class="project-desc">Built a dedicated validation proxy utility processing outbound client metric transmissions against rule schemas across Android/iOS structures prior to server ingest.</div>
-                        </div>
-                        <div class="project-tech">
-                            <span class="tech-badge">Network Proxy</span>
-                            <span class="tech-badge">Mobile Analytics</span>
-                            <span class="tech-badge">Schema Verification</span>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div>
-                            <div class="project-category">Custom Utility Software Architecture</div>
-                            <div class="project-title">Cohort Replay GCS Log Analyzer</div>
-                            <div class="project-desc">Developed an internal parsing script which grabs raw data objects directly from Google Cloud Storage buckets to trace visual event maps and timeline DOM errors.</div>
-                        </div>
-                        <div class="project-tech">
-                            <span class="tech-badge">GCS Buckets</span>
-                            <span class="tech-badge">DOM Replay</span>
-                            <span class="tech-badge">Session Analysis</span>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div>
-                            <div class="project-category">Next-Gen Observability Trace Systems</div>
-                            <div class="project-title">AI SDK Interception Analytics System</div>
-                            <div class="project-desc">Formulated tracking structures mapping conversational analytics data hooks, parsing state message logs, and auditing streaming Server-Sent Event (SSE) telemetry call packets.</div>
-                        </div>
-                        <div class="project-tech">
-                            <span class="tech-badge">Telemetry Call Tracking</span>
-                            <span class="tech-badge">SSE Streams</span>
-                            <span class="tech-badge">SDK Handshakes</span>
-                        </div>
-                    </div>
-
                 </div>
+
+                <div class="visual-project-card">
+                    <div>
+                        <div class="project-meta-tag">Application Observability & Navigation Logs</div>
+                        <div class="project-headline">App Insights Sensor Validation</div>
+                        <div class="project-body-text">Evaluated application data sensor correctness tracking consumer journey pipelines, multi-step back-stack navigations, user click interaction parameters, and remote content caching configurations.</div>
+                    </div>
+                    <div class="badge-container">
+                        <span class="badge-element">User Journeys</span>
+                        <span class="badge-element">Session Replays</span>
+                        <span class="badge-element">Remote Config</span>
+                    </div>
+                </div>
+
+                <div class="visual-project-card">
+                    <div>
+                        <div class="project-meta-tag">Custom Utility Software Engineering</div>
+                        <div class="project-headline">Conviva CTP Payload Viewer</div>
+                        <div class="project-desc">Authored an interactive JavaScript decoding plugin configured to capture and parse compressed outbound telemetry payload packages on-the-fly, driving rapid debugging loops during live triages.</div>
+                    </div>
+                    <div class="badge-container">
+                        <span class="badge-element">JavaScript</span>
+                        <span class="badge-element">Payload Unpacking</span>
+                        <span class="badge-element">Triage Automation</span>
+                    </div>
+                </div>
+
+                <div class="visual-project-card">
+                    <div>
+                        <div class="project-meta-tag">Custom Utility Software Engineering</div>
+                        <div class="project-headline">Network-Layer Schema Validation Proxy</div>
+                        <div class="project-desc">Built a dedicated network proxy layer that validates client logging data metrics instantly against target schemas across Android and iOS structures prior to upload ingestion.</div>
+                    </div>
+                    <div class="badge-container">
+                        <span class="badge-element">Network Layer</span>
+                        <span class="badge-element">Schema Enforcement</span>
+                        <span class="badge-element">Mobile Analytics</span>
+                    </div>
+                </div>
+
+                <div class="visual-project-card">
+                    <div>
+                        <div class="project-meta-tag">Custom Utility Software Engineering</div>
+                        <div class="project-headline">GCS Cohort Replay Log Analyzer</div>
+                        <div class="project-desc">Engineered an analytics processing application consuming raw metrics data dumps directly out of Google Cloud Storage lakes to reconstruct visual event timelines and DOM crash trends.</div>
+                    </div>
+                    <div class="badge-container">
+                        <span class="badge-element">GCS Objects</span>
+                        <span class="badge-element">DOM Replays</span>
+                        <span class="badge-element">Log Extractions</span>
+                    </div>
+                </div>
+
+                <div class="visual-project-card">
+                    <div>
+                        <div class="project-meta-tag">Next-Gen Observability Call Verification</div>
+                        <div class="project-headline">Telemetry Call AI Trace Framework</div>
+                        <div class="project-desc">Formulated tracking structures for inspecting outbound analytics SDK telemetry call packets paired with AI layouts, verifying message handshakes and Server-Sent Event pipelines.</div>
+                    </div>
+                    <div class="badge-container">
+                        <span class="badge-element">Call Tracing</span>
+                        <span class="badge-element">SSE Channels</span>
+                        <span class="badge-element">SDK Telemetry</span>
+                    </div>
+                </div>
+
             </div>
         </div>
 
         <div id="experience" class="section">
-            <div class="card">
-                <h2>Career Milestone Progression</h2>
-                <div class="timeline-container">
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-header">
-                            <div>
-                                <h3 class="timeline-role">Staff Engineer</h3>
-                                <div class="timeline-company">Conviva APAC Pvt Ltd</div>
-                            </div>
-                            <span class="timeline-date">Feb 2021 - Present</span>
-                        </div>
-                        <ul>
-                            <li><strong>Strategic Ownership:</strong> Headed test strategy blueprints, validation parameters, and release governance metrics for the Data Sensor Team across multi-million user telemetry streaming pipelines.</li>
-                            <li><strong>Team Mentorship & Enablement:</strong> Mentored junior/mid-tier engineers, coordinated multi-team regression targets, and engineered internal technical validation standards to dramatically lower leakage.</li>
-                            <li><strong>Telemetry & Analytics Focus:</strong> Validated accurate extraction patterns for both Video Insights (heartbeats, QoE playback) and App Insights (user session reconstruction maps).</li>
-                            <li><strong>Server SDK Call Tracking:</strong> Designed verification protocols mapping outbound tracking loops across underlying server-side C-SDK implementations.</li>
-                            <li><strong>Automation ROI:</strong> Deployed multi-platform Python, JS, and C-integrated automation scripts, cutting manual regression loops down by ~65%.</li>
-                        </ul>
-                    </div>
+            <h2 class="class-heading section-heading">EXPERIENCE PORTFOLIO_</h2>
+            <div class="section-subtext">Comprehensive chronological breakdown of roles, core tasks, and operational ownership parameters:</div>
 
-                    <div class="timeline-item">
-                        <div class="timeline-header">
-                            <div>
-                                <h3 class="timeline-role">Senior QA Engineer</h3>
-                                <div class="timeline-company">Prime Focus Technologies</div>
-                            </div>
-                            <span class="timeline-date">Aug 2020 - Feb 2021</span>
+            <div class="career-timeline">
+                
+                <div class="career-node">
+                    <div class="node-top-row">
+                        <div>
+                            <h3 class="role-headline">Staff Engineer</h3>
+                            <div class="company-headline">Conviva APAC Pvt Ltd</div>
                         </div>
-                        <ul>
-                            <li><strong>Playback Diagnostics:</strong> Verified frame-level navigation accuracy, segment step boundaries, and subtitle rendering states across active multi-bitrate VOD pipelines.</li>
-                            <li><strong>API Integrated Workflow Validation:</strong> Managed validation passes inside desktop panels and media ingest components within the Adobe Premiere Pro CLEAR Platform architecture.</li>
-                        </ul>
+                        <span class="date-badge">Feb 2021 - Present</span>
                     </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-header">
-                            <div>
-                                <h3 class="timeline-role">Senior QA Engineer</h3>
-                                <div class="timeline-company">Sling Media (DISH Network)</div>
-                            </div>
-                            <span class="timeline-date">Nov 2017 - Aug 2020</span>
-                        </div>
-                        <ul>
-                            <li><strong>US OTT Market Scale:</strong> Led end-to-end multi-platform feature testing for a leading US broadcaster OTT layout, delivering updates seamlessly onto Smart TVs, Web, Mobile, Roku, and Xbox setups.</li>
-                            <li><strong>Release Governance:</strong> Maintained final sign-off authority and go/no-go risk evaluations checking builds for large enterprise production deployment states.</li>
-                            <li><strong>Distributed Leadership:</strong> Organized workflow planning patterns and velocity tracking passes across split global team systems to meet tight deployment dates.</li>
-                        </ul>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-header">
-                            <div>
-                                <h3 class="timeline-role">Software Engineer</h3>
-                                <div class="timeline-company">Tata Elxsi (Initially via Test Yantra)</div>
-                            </div>
-                            <span class="timeline-date">May 2015 - Nov 2017</span>
-                        </div>
-                        <ul>
-                            <li><strong>Indian Broadcaster Market Scale:</strong> Commanded functional testing and UI regression arrays for India's leading digital streaming platforms, including StarSports.com, Hotstar, Voot, Tata Sky, Ditto TV, and Hungama Music.</li>
-                            <li><strong>High-Traffic Live Monitoring:</strong> Commanded operational monitoring passes during live concurrent sports streams (IPL, ICC World Cup, Pro Kabaddi League), mitigating client-side video play drops.</li>
-                            <li><strong>E2E Environment Coverage:</strong> Executed custom automation scripts via Selenium across diverse environments, detailing system usage footprints (CPU, memory profiles, battery leakage charts) on distinct phone models.</li>
-                        </ul>
-                    </div>
-
+                    <ul>
+                        <li><strong>Strategic Quality Direction:</strong> Led core test blueprints, data verification parameters, and cross-functional quality sign-off checks for streaming pipelines handling millions of parallel user event data feeds.</li>
+                        <li><strong>Team Enablement & Mentorship:</strong> Mentored junior/mid-tier engineers, coordinated multi-team validation loops, and established high QA testing standards to limit production bug leakages.</li>
+                        <li><strong>Telemetry Insights Focus:</strong> Managed full-scope data sensor correctness validation for both Video Insights (QoE play factors, heartbeats) and App Insights (full timeline session reconstruction maps).</li>
+                        <li><strong>Server Telemetry Call Tracing:</strong> Designed testing frameworks verifying data transmission layouts across core backend server-side telemetry implementations.</li>
+                        <li><strong>Automation Infrastructure:</strong> Built multi-platform Python, JS, and C-integrated functional automation structures, cutting manual testing loops down by ~65%.</li>
+                    </ul>
                 </div>
+
+                <div class="career-node">
+                    <div class="node-top-row">
+                        <div>
+                            <h3 class="role-headline">Senior QA Engineer</h3>
+                            <div class="company-headline">Prime Focus Technologies</div>
+                        </div>
+                        <span class="date-badge">Aug 2020 - Feb 2021</span>
+                    </div>
+                    <ul>
+                        <li><strong>Media Quality Metrics:</strong> Verified frame-level navigation accuracy, ABR bitrate adjustments, closed-caption sync alignment charts, and asset processing workflows across Live and VOD delivery pathways.</li>
+                        <li><strong>API Integration Testing:</strong> Handled automated functional tests checking plugin bindings and media asset panel functions within Adobe Premiere Pro interfaces via the CLEAR platform.</li>
+                    </ul>
+                </div>
+
+                <div class="career-node">
+                    <div class="node-top-row">
+                        <div>
+                            <h3 class="role-headline">Senior QA Engineer</h3>
+                            <div class="company-headline">Sling Media (DISH Network)</div>
+                        </div>
+                        <span class="date-badge">Nov 2017 - Aug 2020</span>
+                    </div>
+                    <ul>
+                        <li><strong>US Market Scale Delivery:</strong> Managed full multi-platform quality gates deploying an enterprise US provider OTT streaming layout cleanly onto Smart TVs, Web, Mobile, Roku, and Xbox targets.</li>
+                        <li><strong>Release Governance:</strong> Owned deployment risk evaluation models and final go/no-go quality check validations ahead of major commercial network software updates.</li>
+                        <li><strong>Team Infrastructure Leadership:</strong> Led task allocation planning, pipeline velocity metrics, and feature testing strategies across split international engineering structures.</li>
+                        <li><strong>Monetization Testing:</strong> Orchestrated comprehensive validation scenarios covering complex Server-Side and Client-Side Dynamic Ad Insertion transitions.</li>
+                    </ul>
+                </div>
+
+                <div class="career-node">
+                    <div class="node-top-row">
+                        <div>
+                            <h3 class="role-headline">Software Engineer</h3>
+                            <div class="company-headline">Tata Elxsi (Initially via Test Yantra)</div>
+                        </div>
+                        <span class="date-badge">May 2015 - Nov 2017</span>
+                    </div>
+                    <ul>
+                        <li><strong>Indian Market Scale Delivery:</strong> Handled UI regression matrices and functional validation checks for India's major premium streaming setups (including StarSports.com, Hotstar, Voot, Tata Sky, Ditto TV, and Hungama Music).</li>
+                        <li><strong>High-Traffic Live Monitoring:</strong> Supervised live performance analytics checks during major concurrent sports events (IPL, ICC World Cup, Pro Kabaddi League), performing rapid triage on streaming play dropouts.</li>
+                        <li><strong>Device Footprint Profiling:</strong> Programmed web UI automated validation modules using Selenium, tracing resource consumption curves (CPU load, memory leakage profiles, battery drain state logs).</li>
+                    </ul>
+                </div>
+
             </div>
         </div>
     </div>
@@ -646,20 +661,20 @@
 
             if(sectionId === 'skills') {
                 setTimeout(() => {
-                    document.querySelectorAll('.skill-bar-fill').forEach(bar => {
+                    document.querySelectorAll('.skill-fill').forEach(bar => {
                         bar.style.width = bar.getAttribute('data-width');
                     });
                 }, 100);
             } else {
-                document.querySelectorAll('.skill-bar-fill').forEach(bar => {
+                document.querySelectorAll('.skill-fill').forEach(bar => {
                     bar.style.width = '0';
                 });
             }
         }
 
-        // Configuration setup for background mesh layout nodes
+        // Particle System Context Setup Properties mapping
         tsParticles.load("tsparticles", {
-            background: { color: { value: "#0d1117" } }, /* Dark Slate Gray Surface */
+            background: { color: { value: "#0b1329" } }, /* Absolute Premium Slate Dark Navy */
             fpsLimit: 60,
             interactivity: {
                 events: {
@@ -667,12 +682,12 @@
                     resize: true
                 },
                 modes: {
-                    grab: { distance: 180, links: { opacity: 0.45, color: "#58a6ff" } }
+                    grab: { distance: 180, links: { opacity: 0.45, color: "#00bcd4" } }
                 }
             },
             particles: {
-                color: { value: "#58a6ff" },
-                links: { enable: true, color: "#30363d", distance: 140, opacity: 0.5, width: 1 },
+                color: { value: "#00bcd4" }, /* High contrast vibrant Cyan nodes */
+                links: { enable: true, color: "#415a77", distance: 140, opacity: 0.5, width: 1 },
                 move: { enable: true, speed: 0.8, direction: "none", outModes: { default: "out" } },
                 number: { density: { enable: true, area: 800 }, value: 65 },
                 opacity: { value: 0.35 },
