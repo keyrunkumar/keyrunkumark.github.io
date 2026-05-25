@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiran Kumar K | Staff QA Engineer</title>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles-all@3.0.3/tsparticles.all.bundle.min.js"></script>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --accent-color: #58a6ff;
+            --text-main: #c9d1d9;
+            --text-bright: #f0f6fc;
+            --border-color: #30363d;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        #tsparticles {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1;
+            top: 0;
+            left: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Top Navigation Menu Bar */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 50px;
+            position: sticky;
+            top: 0;
+            background: rgba(13, 17, 23, 0.8);
+            padding: 15px 0;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        nav button {
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-size: 1rem;
+            cursor: pointer;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        nav button:hover, nav button.active {
+            color: var(--text-bright);
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+        }
+
+        /* Main Content Grid & Layout Sections */
+        .section {
+            display: none;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-section {
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        h1 {
+            color: var(--text-bright);
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: var(--accent-color);
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        h2, h3 {
+            color: var(--text-bright);
+            margin-top: 0;
+        }
+
+        ul {
+            padding-left: 20px;
+            line-height: 1.6;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        /* Grid layouts for technical skills matrices */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+        }
+
+        .skill-tag {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            padding: 6px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            margin: 4px;
+            font-size: 0.85rem;
+        }
+
+        .contact-links a {
+            color: var(--accent-color);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .contact-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="tsparticles"></div>
+
+    <div class="container">
+        <nav>
+            <button class="active" onclick="showSection('home')">Home</button>
+            <button onclick="showSection('about')">About & Skills</button>
+            <button onclick="showSection('experience')">Experience</button>
+        </nav>
+
+        <div id="home" class="section active">
+            <div class="hero-section">
+                <h1>KIRAN KUMAR K_</h1>
+                <div class="subtitle">Staff QA Engineer / Tool Builder</div>
+                <p style="max-width: 600px; margin: 0 auto 30px auto; line-height: 1.6;">
+                    11+ years of expertise in OTT streaming, multimedia analytics, and modern AI observability infrastructure. Proven track record building custom tools that optimize production engineering cycles.
+                </p>
+                <div class="contact-links">
+                    <a href="mailto:keyrunkumark@gmail.com">Email</a> | 
+                    <a href="https://linkedin.com/in/kiran1819" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+
+            <div class="card" style="text-align: center;">
+                <h3 style="color: var(--accent-color); font-size: 2rem; margin: 0;">~65%</h3>
+                <p style="margin: 5px 0 0 0;">Reduction in Manual Validation Cycles via Custom Tooling & Automation Ingestion</p>
+            </div>
+        </div>
+
+        <div id="about" class="section">
+            <div class="card">
+                <h2>Professional Profile</h2>
+                <p>Staff Quality Engineer with deep experience managing release ownership, streaming telemetry validation, and AI-assisted cross-platform validation arrays across Web, Mobile, Smart TVs, and Connected Ecosystems.</p>
+            </div>
+
+            <div class="card">
+                <h2>Technical Skill Matrix</h2>
+                <div class="skills-grid">
+                    <div>
+                        <h3>AI & Next-Gen Tracking</h3>
+                        <span class="skill-tag">LangChain</span>
+                        <span class="skill-tag">LangGraph</span>
+                        <span class="skill-tag">Gemini APIs</span>
+                        <span class="skill-tag">Prompt Tracking</span>
+                        <span class="skill-tag">SSE Events Telemetry</span>
+                    </div>
+                    <div>
+                        <h3>Streaming & Video QoE</h3>
+                        <span class="skill-tag">HLS</span>
+                        <span class="skill-tag">DASH</span>
+                        <span class="skill-tag">DAI (SSAI/CSAI)</span>
+                        <span class="skill-tag">Video QoE Metrics</span>
+                        <span class="skill-tag">FFmpeg</span>
+                    </div>
+                    <div>
+                        <h3>Core Automation & Tools</h3>
+                        <span class="skill-tag">Selenium</span>
+                        <span class="skill-tag">Appium (Java)</span>
+                        <span class="skill-tag">Python Scripting</span>
+                        <span class="skill-tag">Charles Proxy</span>
+                        <span class="skill-tag">ClickHouse / GCS</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Custom Engineering Contributions Built</h2>
+                <ul>
+                    <li><strong>Conviva CTP Viewer Plugin (JS):</strong> Decodes compressed analytics payloads to compute real-time performance tracking metrics.</li>
+                    <li><strong>Cohort Replay Payload Viewer:</strong> Handles session replay analysis, screenshot extraction, and DOM-level debugging from cloud data stores.</li>
+                    <li><strong>Network-layer Schema Proxy Tool:</strong> Live validation proxy for telemetry and event data structural accuracy.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="experience" class="section">
+            <div class="card">
+                <h3>Staff Engineer | Conviva APAC Pvt Ltd</h3>
+                <p style="color: var(--accent-color); margin-top: -5px;">Feb 2021 - Present</p>
+                <ul>
+                    <li>Led QA strategy for Data Sensor pipelines handling real-time high-volume streaming telemetry and platform observability systems.</li>
+                    <li>Designed core SDK/API automation structures reducing platform testing overhead by ~65%.</li>
+                    <li>Validated generative AI agent analytics setups, maintaining telemetry validation structures over SSE events.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Senior QA Engineer | Prime Focus Technologies</h3>
+                <p style="color: var(--accent-color); margin-top: -5px;">Aug 2020 - Feb 2021</p>
+                <ul>
+                    <li>Validated video playback platforms across VOD and live arrays focusing on multi-bitrate delivery and content synchronization.</li>
+                    <li>Executed integration validation arrays for CLEAR Platform setups using Adobe Premiere Pro APIs.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Senior QA Engineer | Sling Media (DISH Network)</h3>
+                <p style="color: var(--accent-color); margin-top: -5px;">Nov 2017 - Aug 2020</p>
+                <ul>
+                    <li>Owned release validation pathways and final sign-off infrastructure deployments for multi-platform environments including Roku, Smart TVs, and Xbox.</li>
+                    <li>Built real-time tracking health dashboards monitoring player runtime errors and application metrics.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+            document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
+            
+            document.getElementById(sectionId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        tsParticles.load("tsparticles", {
+            background: { color: { value: "#0d1117" } },
+            fpsLimit: 60,
+            interactivity: {
+                events: {
+                    onHover: { enable: true, mode: "grab" },
+                    resize: true
+                },
+                modes: {
+                    grab: { distance: 180, links: { opacity: 0.4, color: "#58a6ff" } }
+                }
+            },
+            particles: {
+                color: { value: "#58a6ff" },
+                links: { enable: true, color: "#30363d", distance: 150, opacity: 0.5, width: 1 },
+                move: { enable: true, speed: 1.5, direction: "none", outModes: { default: "out" } },
+                number: { density: { enable: true, area: 800 }, value: 75 },
+                opacity: { value: 0.5 },
+                shape: { type: "circle" },
+                size: { value: { min: 1, max: 3 } }
+            }
+        });
+    </script>
+</body>
+</html>
